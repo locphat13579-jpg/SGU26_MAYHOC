@@ -1,0 +1,211 @@
+TRU?NG Ð?I H?C SÀI GÒN
+KHOA CÔNG NGH? THÔNG TIN
+
+BÁO CÁO BÀI T?P 02
+MÔN: MÁY H?C
+Ð? TÀI: BÀI T?P 02 - ÐÁNH GIÁ MÔ HÌNH
+Gi?ng viên hu?ng d?n: TS. Ð? Nhu Tài
+Sinh viên th?c hi?n: Hu?nh T?n L?c
+Mã s? sinh viên: 3124411158
+Thành ph? H? Chí Minh, Tháng 10/2026
+
+M?C L?C
+PH?N I. ÐÁNH GIÁ MÔ HÌNH	3
+Câu 1. Ma tr?n nh?m l?n 3 l?p A, B, C	3
+Câu 2. Ma tr?n nh?m l?n bài toán nh? phân	4
+Câu 3. Decision List trên t?p d? li?u th?i ti?t	4
+Câu 4. Các ch? s? t? ma tr?n nh?m l?n cho tru?c	5
+PH?N II. KHÁI NI?M MÁY H?C CO B?N	7
+PH?N III. H?C KHÁI NI?M VÀ LÝ THUY?T H?C	11
+Câu 5. H?c khái ni?m Elephant	11
+Câu 6. Gi? thuy?t nh?t quán trên d? li?u Covid-19	13
+Câu 7. Ðánh giá mô hình và lý thuy?t h?c	14
+Tài li?u tham kh?o	16
+PH?N I. ÐÁNH GIÁ MÔ HÌNH
+Ph?n này v?n d?ng các ch? s? dánh giá b? phân l?p ? m?c 3.6 (Model Performance) c?a chuong 3 sách Sridhar. Quy u?c chung: ma tr?n nh?m l?n có hàng là nhãn th?c, c?t là nhãn d? doán; v?i bài nh? phân thì TP, TN, FP, FN và các công th?c du?c dùng nhu sau:
+Accuracy = (TP + TN) / (TP + TN + FP + FN)
+Precision = TP / (TP + FP);   Recall = TP / (TP + FN);   Specificity = TN / (TN + FP)
+F1 = 2 x Precision x Recall / (Precision + Recall)
+Câu 1. Ma tr?n nh?m l?n 3 l?p A, B, C
+Cách làm
+Ghép t?ng c?p (nhãn th?c, nhãn d? doán) theo th? t? r?i dánh d?u dúng/sai, sau dó d?m vào ma tr?n.
+STT12345678910Nhãn th?cABCABCABCAD? doánACCBBAABCCK?t qu?ÐúngSaiÐúngSaiÐúngSaiÐúngÐúngÐúngSaia) Ma tr?n nh?m l?n
+Các c?p sai: (B?C) ? m?u 2, (A?B) ? m?u 4, (C?A) ? m?u 6, (A?C) ? m?u 10. Các c?p còn l?i n?m trên du?ng chéo.
+Th?c t? \ D? doánABCT?ng hàngA2114B0213C1023T?ng c?t33410b) Accuracy t?ng th?
+S? m?u d? doán dúng là t?ng du?ng chéo: 2 + 2 + 2 = 6 trên t?ng 10 m?u.
+Accuracy = 6 / 10 = 0,60 (60%)
+c) Precision, Recall, F1 t?ng l?p
+V?i bài nhi?u l?p, m?i l?p du?c xét theo ki?u "l?p dó là duong, các l?p còn l?i là âm": TP là ô du?ng chéo c?a l?p, FP = t?ng c?t - TP, FN = t?ng hàng - TP.
+L?pTPFPFNPrecisionRecallF1-scoreA23 - 2 = 14 - 2 = 22/3 = 0,6672/4 = 0,5000,571B23 - 2 = 13 - 2 = 12/3 = 0,6672/3 = 0,6670,667C24 - 2 = 23 - 2 = 12/4 = 0,5002/3 = 0,6670,571Trung bình macro0,6110,6110,603Ví d? tính F1 cho l?p A: 2 × 0,667 × 0,5 / (0,667 + 0,5) = 0,667 / 1,167 ˜ 0,571. L?p C có k?t qu? F1 tuong t?: 2 × 0,5 × 0,667 / (0,5 + 0,667) ˜ 0,571.
+Nh?n xét. L?p B du?c nh?n di?n t?t nh?t (precision và recall cùng b?ng 0,667). L?p A có recall th?p nh?t vì mô hình ch? tìm l?i du?c 2 trong 4 m?u A. L?p C có precision th?p nh?t vì có 2 m?u thu?c l?p khác b? gán nh?m vào C.
+Câu 2. Ma tr?n nh?m l?n bài toán nh? phân
+Cách làm
+L?y P làm l?p duong. V?i m?i m?u, d?i chi?u nhãn th?c v?i d? doán d? x?p vào TP, TN, FP ho?c FN.
+STT12345678910Th?cPNPPNNPNPND? doánPNNPPNPNNPLo?iTPTNFNTPFPTNTPTNFNFPa) Ma tr?n nh?m l?n
+Th?c t? \ D? doánPositiveNegativeT?ngPositive3 (TP)2 (FN)5Negative2 (FP)3 (TN)5T?ng5510b) Các giá tr? TP, FP, FN, TN
+• TP = 3 (m?u 1, 4, 7): th?c P, doán P.
+• FN = 2 (m?u 3, 9): th?c P, doán N.
+• FP = 2 (m?u 5, 10): th?c N, doán P.
+• TN = 3 (m?u 2, 6, 8): th?c N, doán N.
+c) Các ch? s? dánh giá
+Accuracy = (3 + 3) / 10 = 0,6
+Precision = 3 / (3 + 2) = 0,6
+Recall = 3 / (3 + 2) = 0,6
+F1 = 2 × 0,6 × 0,6 / (0,6 + 0,6) = 0,6
+Nh?n xét. Do FP = FN = 2 nên Precision b?ng Recall, và F1 trùng v?i hai giá tr? này. Mô hình sai d?i x?ng ? hai l?p, d? chính xác ch? 60%.
+Câu 3. Decision List trên t?p d? li?u th?i ti?t
+(a) D? doán b?ng decision list
+Decision list du?c áp d?ng theo th? t?: m?u kh?p lu?t d?u tiên thì d?ng, không xét các lu?t sau. Hai thu?c tính temperature và humidity không xu?t hi?n trong lu?t nên không ?nh hu?ng. Các lu?t: R1: outlook = overcast ? yes; R2: windy = TRUE ? no; R3: outlook = sunny ? no; R4: còn l?i ? yes.
+STToutlookwindyplay th?cLu?t kh?pD? doánK?t qu?1sunnyFALSEnoR3noÐúng2sunnyTRUEnoR2noÐúng3overcastFALSEyesR1yesÐúng4rainyFALSEyesR4yesÐúng5rainyFALSEyesR4yesÐúng6rainyTRUEnoR2noÐúng7overcastTRUEyesR1yesÐúng8sunnyFALSEnoR3noÐúng9sunnyFALSEyesR3noSai10rainyFALSEyesR4yesÐúng11sunnyTRUEyesR2noSai12overcastTRUEyesR1yesÐúng13overcastFALSEyesR1yesÐúng14rainyTRUEnoR2noÐúngLuu ý m?u 7 và 12: outlook = overcast nhung windy = TRUE, vì R1 d?ng tru?c R2 nên v?n d? doán yes (và dúng).
+(b) Ma tr?n nh?m l?n (l?p duong: play = yes)
+Trong 14 m?u có 9 m?u th?c là yes (m?u 3, 4, 5, 7, 9, 10, 11, 12, 13) và 5 m?u th?c là no (m?u 1, 2, 6, 8, 14). Mô hình d? doán dúng 7 m?u yes, b? sót 2 m?u yes (m?u 9, 11), và nh?n di?n dúng c? 5 m?u no.
+Th?c t? \ D? doányesnoT?ngyesTP = 7FN = 29noFP = 0TN = 55T?ng7714(c) Các ch? s? dánh giá
+Ch? s?Công th?cThay s?K?t qu?Accuracy(TP + TN) / T?ng(7 + 5) / 140,857PrecisionTP / (TP + FP)7 / (7 + 0)1,000Recall (Sensitivity)TP / (TP + FN)7 / (7 + 2)0,778SpecificityTN / (TN + FP)5 / (5 + 0)1,000F1-score2PR / (P + R)2 × 1 × 0,778 / (1 + 0,778)0,875Nh?n xét. Mô hình không có duong tính gi? (FP = 0) nên Precision và Specificity d?u b?ng 1; toàn b? l?i là âm tính gi? (FN = 2). Hai m?u sai d?u có outlook = sunny và humidity = 70 (m?u 9 và 11), nghia là lu?t R3 "sunny ? no" dã quá r?ng: tr?i n?ng nhung d? ?m th?p thì v?n choi. Mu?n c?i thi?n có th? thêm lu?t d?a vào humidity.
+Câu 4. Các ch? s? t? ma tr?n nh?m l?n cho tru?c
+Cách làm
+Ð?c t? b?ng: TN = 50, FP = 10, FN = 5, TP = 100. Ki?m tra t?ng: th?c t? NO = 50 + 10 = 60; th?c t? YES = 5 + 100 = 105; t?ng c?ng 165 m?u, kh?p v?i d?. Sau dó thay s? vào t?ng công th?c.
+Ch? s?Công th?cThay s?K?t qu?Accuracy(TP + TN) / T?ng(100 + 50) / 165 = 150/1650,9091Misclassification rate(FP + FN) / T?ng(10 + 5) / 165 = 15/1650,0909TPRTP / (TP + FN)100 / 1050,9524FPRFP / (FP + TN)10 / 600,1667TNRTN / (TN + FP)50 / 600,8333PrecisionTP / (TP + FP)100 / 1100,9091RecallTP / (TP + FN)100 / 1050,9524SensitivityTP / (TP + FN)100 / 1050,9524SpecificityTN / (TN + FP)50 / 600,8333Prevalence(TP + FN) / T?ng105 / 1650,6364Nh?n xét.
+• Recall, Sensitivity và TPR là cùng m?t d?i lu?ng (0,9524); Specificity và TNR cung là m?t (0,8333).
+• Accuracy + Misclassification rate = 1 và FPR + TNR = 1, dúng nhu quan h? bù nhau gi?a các ch? s?.
+• Prevalence là 63,6%, t?c d? li?u nghiêng v? l?p YES. Mô hình b?t du?c 95,2% ca YES nhung báo nh?m 16,7% ca NO thành YES, nên khi dánh giá không nên ch? nhìn Accuracy (90,9%).
+PH?N II. KHÁI NI?M MÁY H?C CO B?N
+Các câu tr? l?i du?i dây du?c tóm t?t t? chuong 3 "Basics of Learning Theory" c?a sách Machine Learning (Sridhar), trình bày l?i b?ng l?i c?a mình. M?c nào c?n ví d? thì dùng b? d? li?u Elephant (Table 3.1 và Table 3.5) trong sách.
+Câu h?i 1. Các phuong pháp h?c du?c gi?i thi?u
+Sách (m?c 3.1) nêu 7 cách h?c c?a con ngu?i mà máy h?c mô ph?ng l?i:
+Phuong phápTên g?i khácÝ chínhH?c thu?c lòngRote learningGhi nh?, g?p l?i d?u vào dã bi?t thì tr? l?i d?u ra dã luu, không c?n hi?u logic.H?c qua ví d?H?c quy n?p, h?c khám pháSuy ra quy lu?t chung t? t?p các quan sát ho?c ví d?.H?c t? ngu?i d?yPassive learning; có bi?n th? active learningH?c th? d?ng t? chuyên gia; ? active learning, ngu?i h?c ch? d?ng h?i chuyên gia d? gán nhãn d? li?u chua có nhãn.H?c b?ng tu duy ph?n bi?nH?c suy di?nSuy ra s? ki?n ho?c k?t lu?n m?i t? các s? ki?n dã bi?t.T? h?cReinforcement learningT? d?nh hu?ng, h?c t? sai l?m, ph?t và thu?ng.H?c gi?i quy?t v?n d?Cognitive learningCh? bi?t dích, t? tìm phuong pháp d? d?t m?c tiêu.H?c b?ng khái quát hóa l?i gi?i thíchExplanation-based learning (EBL)Dùng tri th?c chuyên gia trong linh v?c d? tang d? chính xác c?a khái ni?m h?c du?c.Ngoài ra sách phân bi?t h? th?ng h?c c? di?n (nh?n d?u vào tr?c ti?p t? môi tru?ng, sinh mô hình r?i d? doán) v?i h? th?ng thích nghi (h?c qua ph?n h?i/ph?n thu?ng t? môi tru?ng, t?c h?c tang cu?ng).
+Câu h?i 2. Gi? thuy?t (hypothesis) và không gian gi? thuy?t (hypothesis space)
+Gi? thuy?t h là mô hình x?p x? hàm m?c tiêu f, mô t? quan h? gi?a các thu?c tính d?c l?p và thu?c tính ph? thu?c c?a d? li?u hu?n luy?n; nó là mô hình d? doán ánh x? t?t nh?t t? d?u vào sang d?u ra. Không gian gi? thuy?t H là t?p t?t c? các gi? thuy?t có th? dùng d? x?p x? f; thu?t toán h?c s? ch?n trong H gi? thuy?t phù h?p nh?t. M?i thu?t toán bi?u di?n H theo cách riêng: h?i quy dùng hàm tuy?n tính, cây quy?t d?nh dùng cây.
+Ví d? v?i Table 3.1: có 2×2×2×2×2×3×2×2 = 384 m?u khác nhau; n?u m?i thu?c tính du?c thêm hai giá tr? "?" và "f" thì có 4×4×4×4×4×5×4×4 = 81.920 gi? thuy?t v? m?t cú pháp, nhung ch? có 3×3×3×3×3×4×3×3 + 1 = 8.749 gi? thuy?t khác nhau v? ng? nghia (m?i gi? thuy?t ch?a f d?u r?ng nên g?p thành 1).
+Câu h?i 3. Bi?n d? báo và bi?n m?c tiêu
+Bi?n d? báo (predictor variable), còn g?i là bi?n d?c l?p, là các bi?n d?u vào dùng d? d? doán. Bi?n m?c tiêu (target variable), còn g?i là bi?n ph? thu?c, là bi?n d?u ra c?n d? doán. Trong b?ng Elephant, các bi?n d? báo là Horns, Tail, Tusks, Paws, Fur, Color, Hooves, Size; bi?n m?c tiêu là Elephant (Yes/No).
+Câu h?i 4. Hàm m?c tiêu (target function)
+Hàm m?c tiêu f: X ? Y là hàm ánh x? gi?a bi?n d?c l?p và bi?n ph? thu?c, t?c t? không gian d?u vào X sang không gian d?u ra Y. Hàm này không bi?t tru?c; vi?c h?c là ch?n m?t hàm g (gi? thuy?t) sao cho g x?p x? f trên các m?u. Trong h?c khái ni?m, f(x) = c(x) là hàm Boolean cho bi?t x có thu?c khái ni?m hay không.
+Câu h?i 5. H?c khái ni?m (concept learning)
+H?c khái ni?m là chi?n lu?c thu nh?n tri th?c tr?u tu?ng: t? các m?u hu?n luy?n, suy ra m?t khái ni?m t?ng quát ho?c m?t ph?m trù. V? hình th?c, dó là vi?c suy ra m?t hàm giá tr? Boolean t? các m?u hu?n luy?n, hay nói cách khác là tìm trong không gian gi? thuy?t gi? thuy?t kh?p nh?t v?i khái ni?m dích. Vì di t? m?u c? th? d?n quy t?c chung nên nó còn g?i là h?c quy n?p (inductive learning).
+Câu h?i 6. Khái ni?m (concept) trong h?c khái ni?m
+Khái ni?m (hay ph?m trù) là m?t l?p d?i tu?ng du?c xác d?nh b?i t?p d?c trung chung và liên quan, và du?c bi?u di?n nhu m?t hàm Boolean nh?n giá tr? dúng/sai. Ví d?, khái ni?m "Elephant" là t? h?p d?c trung c? th? (không s?ng, duôi ng?n, có ngà, màu den, không móng gu?c...) giúp phân bi?t voi v?i các loài còn l?i.
+Câu h?i 7. Ba thành ph?n c?a m?t bài toán h?c khái ni?m
+• Input: t?p d? li?u hu?n luy?n, m?i m?u du?c gán nhãn khái ni?m mà nó thu?c v?.
+• Output: khái ni?m dích hay hàm m?c tiêu f(x), t?c tìm gi? thuy?t (t?p d?c trung) xác d?nh khái ni?m.
+• Test: các m?u m?i dùng d? ki?m tra mô hình dã h?c.
+Câu h?i 8. Cách bi?u di?n m?t gi? thuy?t
+M?i gi? thuy?t là m?t phép h?i (AND) các di?u ki?n thu?c tính. M?i thu?c tính nh?n m?t trong ba d?ng: "?" (nh?n giá tr? nào cung du?c), "f" (không nh?n giá tr? nào, t?c giá tr? r?ng), ho?c m?t giá tr? c? th?. M?t m?u x th?a gi? thuy?t h thì h(x) = 1.
+h = <No, ?, Yes, ?, ?, Black, No, Medium>  tuong ?ng  (Horns = No) ? (Tusks = Yes) ? (Color = Black) ? (Hooves = No) ? (Size = Medium)
+Gi? thuy?t t?ng quát nh?t là <?, ?, ?, ?, ?, ?, ?, ?> (m?i con v?t d?u là voi); gi? thuy?t c? th? nh?t là <f, f, f, f, f, f, f, f> (không con v?t nào là voi).
+Câu h?i 9. Phép quy n?p và thiên l?ch quy n?p (inductive bias)
+Quy n?p (induction) là quá trình h?c m?t hàm m?c tiêu hay khái quát hóa d? li?u hu?n luy?n thành m?t mô hình chung. Thiên l?ch quy n?p là t?p các gi? d?nh có s?n mà thu?t toán dua vào, ngoài d? li?u hu?n luy?n, d? có th? th?c hi?n quy n?p (còn g?i là bias c?a thu?t toán). Ví d?: h?i quy tuy?n tính gi? d?nh các bi?n d? báo liên h? v?i bi?n m?c tiêu; C4.5 gi? d?nh ch?n thu?c tính t?t nh?t theo ki?u tham lam khi tách nút; k-NN gi? d?nh các di?m g?n nhau theo kho?ng cách Euclid thu?c cùng l?p; Naive Bayes gi? d?nh các bi?n d?u vào d?c l?p.
+Sách chia bias thành hai lo?i: ràng bu?c/h?n ch? (restriction: gi?i h?n không gian gi? thuy?t) và uu tiên (preference: áp m?t th? t? lên không gian gi? thuy?t).
+Câu h?i 10. Ba lo?i sai s? d? doán
+• Sai s? bias (bias error): chênh l?ch gi?a giá tr? d? doán và giá tr? th?c, do gi? d?nh don gi?n hóa không chính xác ho?c do mô hình h?c du?i m?c (underfitting); th? hi?n rõ khi dua d? li?u ki?m tra vào.
+• Sai s? phuong sai (variance error): m?c thay d?i c?a hàm m?c tiêu u?c lu?ng khi t?p hu?n luy?n thay d?i ho?c có ngo?i l?, nhi?u; t?c d? phân tán gi?a các mô hình du?c h?c t? các t?p hu?n luy?n khác nhau.
+• Sai s? không th? gi?m (irreducible error): không th? lo?i b? vì bi?n chua bi?t, nhi?u... (dôi khi gi?m du?c ph?n nào b?ng làm s?ch d? li?u).
+Câu h?i 11. Ðánh d?i gi?a bias và variance
+Hai lo?i sai s? này luôn dánh d?i nhau: tang bias thì gi?m variance và ngu?c l?i, không th? c?c ti?u hóa c? hai cùng lúc. Các thu?t toán tuy?n tính (h?i quy tuy?n tính, LDA, h?i quy logistic, Naive Bayes) thu?ng có bias cao, variance th?p: h?c nhanh và ?n d?nh nhung không chính xác. Các thu?t toán phi tuy?n (cây quy?t d?nh, k-NN, SVM) thu?ng có bias th?p, variance cao: kh?p t?t d? li?u hu?n luy?n nhung thi?u ?n d?nh v?i d? li?u m?i, d? overfitting.
+Cách x? lý theo sách: d? gi?m bias, thêm d?c trung (ví d? d?c trung da th?c) ho?c gi?m h? s? di?u chu?n ?; d? gi?m variance, thêm m?u hu?n luy?n, gi?m s? d?c trung, tang ? (regularization), c?t t?a ho?c d?ng s?m v?i cây, dropout v?i m?ng no-ron. K?t h?p mô hình (ensemble) và cross-validation cung giúp gi?m c? hai.
+Câu h?i 12. Overfitting và underfitting
+Overfitting (quá kh?p)Underfitting (chua kh?p)Nguyên nhânMô hình h?c quá nhi?u t? d? li?u hu?n luy?n, k? c? nhi?u; d?c trung quá ph?c t?pMô hình chua h?c du?c t? d? li?u, ho?c d?c trung quá don gi?nBi?u hi?nR?t t?t trên t?p hu?n luy?n nhung kém trên t?p ki?m traKém ngay c? trên t?p hu?n luy?nThu?ng g?p ?Mô hình phi tham s?, phi tuy?n linh ho?tMô hình quá don gi?n (bias cao)M?c tiêu là ch?n mô hình ? gi?a hai thái c?c (good fit), dù th?c t? r?t khó d?t.
+Câu h?i 13. Tham s? mô hình và siêu tham s?
+Tham s? mô hình (model parameters) du?c h?c tr?c ti?p t? d? li?u hu?n luy?n: h? s? trong mô hình h?i quy, thu?c tính tách nút trong cây quy?t d?nh, tr?ng s? và d? l?ch trong m?ng no-ron. Siêu tham s? (hyperparameters) là tham s? m?c cao hon, không h?c tr?c ti?p du?c mà ph?i ch?n tru?c và tinh ch?nh: h? s? di?u chu?n ? trong h?i quy có di?u chu?n, s? cây trong r?ng ng?u nhiên...
+Câu h?i 14. Các phuong pháp l?y m?u l?i (re-sampling)
+Re-sampling là k? thu?t ch?n mô hình b?ng cách d?ng l?i t?p hu?n luy?n và t?p ki?m tra t? d? li?u có s?n b?ng cách ch?n ng?u nhiên các m?u. Các phuong pháp ph? bi?n theo sách:
+• Random train/test split và Holdout: chia d? li?u thành t?p hu?n luy?n và t?p ki?m tra (làm m?t l?n ho?c l?p l?i); don gi?n nhung phuong sai cao, k?t qu? ph? thu?c cách chia.
+• K-fold cross-validation: chia d? li?u thành k ph?n b?ng nhau, l?n lu?t dùng k - 1 ph?n d? hu?n luy?n và 1 ph?n d? ki?m tra, l?p k l?n r?i l?y trung bình.
+• Stratified K-fold: nhu K-fold nhung m?i ph?n gi? cùng t? l? các l?p nhu t?p g?c.
+• Leave-One-Out (LOOCV): m?i l?n gi? l?i dúng 1 m?u d? ki?m tra, hu?n luy?n trên n - 1 m?u còn l?i, l?p n l?n; ít bias nhung t?n kém.
+• Bootstrap: sách ch? nêu tên trong nhóm re-sampling (v? b?n ch?t là l?y m?u có hoàn l?i t? t?p d? li?u).
+Chi ti?t t?ng phuong pháp du?c trình bày ? Câu 7(c).
+Câu h?i 15. Khái quát các learning framework trong chuong
+• PAC (Probably Approximately Correct) (Valiant): phân tích toán h?c d? khó c?a vi?c h?c, tìm gi? thuy?t "có th? x?p x? dúng v?i sai s? th?p"; kèm mistake bound model (d?m s? l?n sai tru?c khi h?i t?) và phân bi?t không gian gi? thuy?t h?u h?n/vô h?n.
+• U?c lu?ng d? chính xác gi? thuy?t: sample error, true error và kho?ng tin c?y 95%.
+• B?t d?ng th?c Hoeffding: ch?n xác su?t d? in-sample error l?ch kh?i out-of-sample error.
+• VC dimension: do nang l?c c?a không gian gi? thuy?t vô h?n, dùng d? ch?n sai s? t?ng quát hóa.
+C? b?n n?i dung này du?c gi?i thích chi ti?t hon ? Câu 7.
+PH?N III. H?C KHÁI NI?M VÀ LÝ THUY?T H?C
+Ð? g?c dánh s? các câu trong ph?n này là Câu 5, Câu 3 và Câu 4 (trùng s? v?i các câu ? Ph?n I). Ð? tránh nh?m, bài làm dánh l?i thành Câu 5, Câu 6, Câu 7 và ghi chú s? g?c trong tiêu d?.
+Câu 5. H?c khái ni?m Elephant (6 m?u)
+D? li?u hu?n luy?n (m?u duong: 1, 2, 4, 6; m?u âm: 3, 5):
+#HornsTailTusksPawsFurColorHoovesSizeElephant1NoShortYesNoNoBlackNoBigYes (+)2NoShortNoNoNoBrownNoMediumYes (+)3YesShortNoNoNoBrownYesMediumNo (-)4NoShortYesNoNoBlackNoMediumYes (+)5NoLongNoYesYesWhiteNoMediumNo (-)6NoShortYesYesYesBlackNoBigYes (+)a) Thu?c tính d?u vào, thu?c tính dích và bi?u di?n gi? thuy?t
+• Thu?c tính d?u vào (8): Horns, Tail, Tusks, Paws, Fur, Color, Hooves, Size.
+• Thu?c tính dích: Elephant ? {Yes, No}; khái ni?m dích c: Elephant ? {Yes, No}.
+• Bi?u di?n gi? thuy?t: b? 8 giá tr?, m?i giá tr? là "?", "f" ho?c m?t giá tr? c? th?; gi? thuy?t là phép h?i (AND) c?a 8 di?u ki?n này. Ví d? h = <No, Short, Yes, ?, ?, Black, No, ?> tuong ?ng (Horns = No) ? (Tail = Short) ? (Tusks = Yes) ? (Color = Black) ? (Hooves = No).
+b) Gi? thuy?t t?ng quát nh?t và c? th? nh?t
+• T?ng quát nh?t: <?, ?, ?, ?, ?, ?, ?, ?> (ch?p nh?n m?i con v?t là voi).
+• C? th? nh?t: <f, f, f, f, f, f, f, f> (không con v?t nào là voi).
+c) Thu?t toán Find-S
+Find-S b?t d?u t? gi? thuy?t c? th? nh?t, ch? xét m?u duong: v?i m?i thu?c tính, n?u giá tr? c?a m?u khác giá tr? trong h thì thay b?ng "?", n?u gi?ng thì gi? nguyên; m?u âm b? b? qua.
+Bu?cM?uLo?iGi? thuy?t h sau bu?c nàyGi?i thích0--<f, f, f, f, f, f, f, f>Kh?i t?o1M?u 1Duong<No, Short, Yes, No, No, Black, No, Big>M?u duong d?u tiên: h l?y dúng giá tr? c?a m?u 12M?u 2Duong<No, Short, ?, No, No, ?, No, ?>Tusks (Yes?No), Color (Black?Brown), Size (Big?Medium) d?i thành ?3M?u 3Âm<No, Short, ?, No, No, ?, No, ?>B? qua m?u âm4M?u 4Duong<No, Short, ?, No, No, ?, No, ?>Các giá tr? c? th? c?a h d?u kh?p m?u 4, h không d?i5M?u 5Âm<No, Short, ?, No, No, ?, No, ?>B? qua m?u âm6M?u 6Duong<No, Short, ?, ?, ?, ?, No, ?>Paws (No?Yes) và Fur (No?Yes) d?i thành ?d) Gi? thuy?t cu?i cùng c?a Find-S
+h_FindS = <No, Short, ?, ?, ?, ?, No, ?>  =  (Horns = No) ? (Tail = Short) ? (Hooves = No)
+Ki?m tra v?i m?u âm: m?u 3 có Horns = Yes nên h(x) = 0; m?u 5 có Tail = Long nên h(x) = 0. Gi? thuy?t nh?t quán v?i c? 6 m?u.
+e) Thu?t toán Candidate Elimination (biên S và biên G)
+Kh?i t?o S0 = <f,...,f> (c? th? nh?t) và G0 = <?,...,?> (t?ng quát nh?t). Quy t?c:
+• M?u duong: t?ng quát hóa S (thu?c tính khác thì thành "?") và lo?i kh?i G nh?ng gi? thuy?t không bao ph? m?u dó.
+• M?u âm: chuyên bi?t hóa t?i thi?u các gi? thuy?t trong G dang bao ph? m?u âm, sao cho v?n t?ng quát hon S. Ch? dùng du?c thu?c tính mà S có giá tr? c? th? và khác giá tr? c?a m?u âm.
+Di?n bi?n t?ng m?u
+• M?u 1 (+): S1 = <No, Short, Yes, No, No, Black, No, Big>; G1 = G0 = {<?,...,?>}.
+• M?u 2 (+): S2 = <No, Short, ?, No, No, ?, No, ?>; G2 = G1 (v?n bao ph? m?u 2).
+• M?u 3 (-) = (Yes, Short, No, No, No, Brown, Yes, Medium): trong S2, các thu?c tính có giá tr? c? th? là Horns, Tail, Paws, Fur, Hooves. Ch? Horns (No ? Yes) và Hooves (No ? Yes) khác m?u âm, còn Tail, Paws, Fur trùng nên không lo?i du?c m?u 3. V?y G3 = {<No,?,?,?,?,?,?,?>, <?,?,?,?,?,?,No,?>}; S3 = S2.
+• M?u 4 (+): m?u 4 dã du?c S2 bao ph? nên S4 = S3; c? hai gi? thuy?t trong G d?u bao ph? m?u 4 nên G4 = G3.
+• M?u 5 (-) = (No, Long, No, Yes, Yes, White, No, Medium): c? hai gi? thuy?t trong G4 d?u bao ph? m?u 5 nên ph?i chuyên bi?t hóa. Thu?c tính S4 có giá tr? c? th? và khác m?u 5 là Tail (Short ? Long), Paws (No ? Yes), Fur (No ? Yes). M?i gi? thuy?t cu sinh 3 gi? thuy?t m?i, t?ng 6, không cái nào t?ng quát hon cái khác nên gi? c? 6; S5 = S4.
+• M?u 6 (+) = (No, Short, Yes, Yes, Yes, Black, No, Big): S6 = <No, Short, ?, ?, ?, ?, No, ?> (Paws và Fur thành ?). Lo?i kh?i G các gi? thuy?t dòi Paws = No ho?c Fur = No vì không bao ph? m?u 6, còn l?i 2 gi? thuy?t.
+Sau m?uBiên SBiên GKh?i t?o<f, f, f, f, f, f, f, f><?, ?, ?, ?, ?, ?, ?, ?>1 (+)<No, Short, Yes, No, No, Black, No, Big><?, ?, ?, ?, ?, ?, ?, ?>2 (+)<No, Short, ?, No, No, ?, No, ?><?, ?, ?, ?, ?, ?, ?, ?>3 (-)<No, Short, ?, No, No, ?, No, ?><No, ?, ?, ?, ?, ?, ?, ?>; <?, ?, ?, ?, ?, ?, No, ?>4 (+)<No, Short, ?, No, No, ?, No, ?><No, ?, ?, ?, ?, ?, ?, ?>; <?, ?, ?, ?, ?, ?, No, ?>5 (-)<No, Short, ?, No, No, ?, No, ?><No, Short, ?, ?, ?, ?, ?, ?>; <No, ?, ?, No, ?, ?, ?, ?>; <No, ?, ?, ?, No, ?, ?, ?>; <?, Short, ?, ?, ?, ?, No, ?>; <?, ?, ?, No, ?, ?, No, ?>; <?, ?, ?, ?, No, ?, No, ?>6 (+)<No, Short, ?, ?, ?, ?, No, ?><No, Short, ?, ?, ?, ?, ?, ?>; <?, Short, ?, ?, ?, ?, No, ?>f) Version space
+Sau m?u 6: S = {<No, Short, ?, ?, ?, ?, No, ?>}, G = {<No, Short, ?, ?, ?, ?, ?, ?>, <?, Short, ?, ?, ?, ?, No, ?>}. Version space g?m m?i gi? thuy?t n?m gi?a S và G, t?c là các gi? thuy?t b? b?t di?u ki?n c?a S mà v?n còn ch?a ít nh?t t?t c? di?u ki?n c?a m?t ph?n t? G. Ba di?u ki?n c?a S là Horns = No (H), Tail = Short (T), Hooves = No (Ho); G1 gi? {H, T}, G2 gi? {T, Ho}. V?y version space có dúng 3 gi? thuy?t:
+Gi? thuy?tBi?u di?nVai tròh1<No, Short, ?, ?, ?, ?, No, ?>Biên S (c? th? nh?t)h2<No, Short, ?, ?, ?, ?, ?, ?>Biên Gh3<?, Short, ?, ?, ?, ?, No, ?>Biên GÐ? ki?m ch?ng, mình dã li?t kê toàn b? gi? thuy?t d?ng h?i (m?i thu?c tính là m?t giá tr? ho?c "?") và gi? l?i nh?ng gi? thuy?t nh?t quán v?i 6 m?u; k?t qu? trùng dúng v?i 3 gi? thuy?t trên. Ði?u ki?n Tail = Short có m?t trong c? ba, nên dây là di?u ki?n ch?c ch?n nh?t c?a khái ni?m "voi" trên t?p d? li?u này. Find-S ? m?c (d) cho dúng gi? thuy?t h1, t?c biên S c?a version space.
+Câu 3. Gi? thuy?t nh?t quán trên d? li?u Covid-19
+#FeverCoughThroat_PainBody_PainCovid-19I1NYYYPositiveI2YYYYPositiveI3YNYYPositiveI4NYNNNegativeI5YYYNPositiveI6NNNYNegativeI7NNNNNegativea) Không gian d?u vào, bi?n m?c tiêu, d?ng bi?u di?n gi? thuy?t
+• Không gian d?u vào X: 4 thu?c tính nh? phân (Y/N) nên có 24 = 16 m?u có th? x?y ra; d? li?u ch? quan sát 7 m?u.
+• Bi?n m?c tiêu: Covid-19 ? {Positive, Negative}; m?u duong là I1, I2, I3, I5, m?u âm là I4, I6, I7.
+• Bi?u di?n gi? thuy?t: phép h?i 4 di?u ki?n, m?i thu?c tính nh?n Y, N, "?" ho?c "f", ví d? <?, ?, Y, ?>. V? cú pháp có 44 = 256 gi? thuy?t, v? ng? nghia có 34 + 1 = 82 gi? thuy?t khác nhau.
+b) Find-S (ch? xét m?u duong)
+Bu?cM?uGi? thuy?t hGi?i thích0-<f, f, f, f>Kh?i t?o1I1 (+)<N, Y, Y, Y>L?y dúng giá tr? c?a I12I2 (+)<?, Y, Y, Y>Fever: N ? Y nên thành ?3I3 (+)<?, ?, Y, Y>Cough: Y ? N nên thành ?4I4 (-)<?, ?, Y, Y>B? qua m?u âm5I5 (+)<?, ?, Y, ?>Body_Pain: Y ? N nên thành ?6, 7I6, I7 (-)<?, ?, Y, ?>B? qua m?u âmGi? thuy?t cu?i: h = <?, ?, Y, ?>, nghia là "Throat_Pain = Y thì Positive". Ki?m tra các m?u âm: I4, I6, I7 d?u có Throat_Pain = N nên b? phân lo?i Negative, dúng.
+c) Generalization/specialization: gi? thuy?t nh?t quán v?i c? m?u duong và m?u âm
+• Specific ? General (t?ng quát hóa t? <f,...>) chính là Find-S ? trên, cho biên S = <?, ?, Y, ?>.
+• General ? Specific (chuyên bi?t hóa t? <?,?,?,?>): ba m?u duong I1, I2, I3 không làm G d?i. V?i I4 (-) = (N, Y, N, N), cách chuyên bi?t hóa t?i thi?u là d?t m?t thu?c tính khác giá tr? c?a I4: Fever = Y, Cough = N, Throat_Pain = Y ho?c Body_Pain = Y. Ð?i chi?u v?i m?u duong I1 = (N, Y, Y, Y): Fever = Y và Cough = N d?u làm sai I1 nên b? lo?i. Còn l?i G4 = {<?, ?, Y, ?>, <?, ?, ?, Y>}.
+• I5 (+) = (Y, Y, Y, N): gi? thuy?t <?, ?, ?, Y> dòi Body_Pain = Y nên không bao ph? I5, b? lo?i. G5 = {<?, ?, Y, ?>}.
+• I6 (-) và I7 (-): <?, ?, Y, ?> không bao ph? hai m?u này (Throat_Pain = N) nên G gi? nguyên. K?t qu? G = {<?, ?, Y, ?>}.
+Ki?m ch?ng b?ng cách li?t kê toàn b? 34 = 81 gi? thuy?t có th? (m?i thu?c tính là Y, N ho?c ?): ch? duy nh?t <?, ?, Y, ?> nh?t quán v?i c? 4 m?u duong và 3 m?u âm.
+d) Version space b?ng hai biên S và G
+S = { <?, ?, Y, ?> },   G = { <?, ?, Y, ?> }
+S và G trùng nhau nên version space ch? có m?t gi? thuy?t duy nh?t (dã h?i t?), khác v?i Câu 5 có 3 gi? thuy?t. Ði?u này nghia là d? li?u dã d? d? xác d?nh khái ni?m trong l?p gi? thuy?t d?ng h?i.
+e) Phân lo?i m?u m?i chua quan sát
+Dùng h = <?, ?, Y, ?>: m?u m?i du?c d? doán Positive khi và ch? khi Throat_Pain = Y; các thu?c tính còn l?i không ?nh hu?ng.
+• M?u m?i x1 = (Fever = Y, Cough = N, Throat_Pain = N, Body_Pain = Y): Throat_Pain = N nên h(x1) = 0, d? doán Negative.
+• M?u m?i x2 = (Fever = N, Cough = N, Throat_Pain = Y, Body_Pain = N): Throat_Pain = Y nên h(x2) = 1, d? doán Positive.
+Vì version space ch? có m?t gi? thuy?t nên m?i gi? thuy?t nh?t quán d?u "b? phi?u" nhu nhau, k?t qu? không mo h?. C?n luu ý dây là suy lu?n quy n?p d?a trên gi? d?nh (inductive bias) khái ni?m là m?t phép h?i don gi?n và d? li?u không nhi?u, nên ch? mang tính minh h?a bài t?p, không ph?i ch?n doán y t?.
+Câu 4. Ðánh giá mô hình và lý thuy?t h?c
+a) Training error và test error
+Training error (in-sample / empirical)Test error (out-of-sample / generalization)Ðo trênD? li?u hu?n luy?n, trong lúc xây mô hìnhD? li?u m?i chua t?ng th?yKý hi?uE_inE_outÝ nghiaMô hình kh?p d? li?u dã h?c d?n dâuKh? nang t?ng quát hóa c?a mô hìnhThông thu?ng E_in nh? hon E_out; kho?ng cách l?n gi?a hai giá tr? là d?u hi?u c?a overfitting. Ðó là lý do ph?i d? riêng t?p ki?m tra không tham gia hu?n luy?n.
+b) Sample error và true error
+• Sample error error_S(h): t? l? m?u trong t?p S b? gi? thuy?t h phân lo?i sai, t?c s? m?u sai chia n.
+• True error: xác su?t gi? thuy?t h phân lo?i sai m?t m?u l?y ng?u nhiên t? mi?n d? li?u (theo phân ph?i th?t).
+True error không tính tr?c ti?p du?c nên du?c u?c lu?ng b?ng sample error cùng kho?ng tin c?y 95%:
+error_S(h) ± 1,96 · v( error_S(h) · (1 - error_S(h)) / n )
+(Sách in d?u "-" gi?a hai th?a s? ? t? s?, nhung công th?c chu?n c?a kho?ng tin c?y nh? th?c là tích; ? dây dùng d?ng chu?n.) Ví d? minh h?a v?i Câu 3: error_S = 2/14 ˜ 0,143 và n = 14 thì n?a d? r?ng ˜ 1,96 × v(0,143 × 0,857 / 14) ˜ 0,183, t?c kho?ng [0, 0,33]. Kho?ng r?t r?ng vì n nh?. (Ví d? ch? d? minh h?a cách tính, vì t?p S ? dây cung là d? li?u dùng khi xét lu?t.)
+c) Nguyên lý c?a Holdout, K-fold, Stratified K-fold và LOOCV
+Phuong phápCách làmUu di?mNhu?c di?mHoldoutChia d? li?u thành t?p hu?n luy?n và t?p ki?m tra; hu?n luy?n r?i dánh giá trên t?p ki?m tra (làm m?t l?n ho?c l?p l?i)Ðon gi?n, nhanhPhuong sai cao, k?t qu? ph? thu?c cách chiaK-fold CVChia thành k ph?n b?ng nhau; k l?n, m?i l?n dùng k - 1 ph?n hu?n luy?n và 1 ph?n ki?m tra; l?y trung bình k k?t qu?M?i m?u d?u du?c dùng d? ki?m tra; u?c lu?ng ?n d?nh honT?n k l?n hu?n luy?nStratified K-foldNhu K-fold nhung m?i ph?n gi? cùng t? l? các l?p nhu t?p g?cPhù h?p d? li?u l?ch l?pV?n t?n k l?n hu?n luy?nLOOCVk = n: m?i l?n ch? gi? 1 m?u d? ki?m tra, hu?n luy?n trên n - 1 m?u; l?p n l?nÍt bias, t?n d?ng g?n h?t d? li?uR?t t?n kém khi n l?nd) Vì sao dùng cross-validation d? ch?n và tinh ch?nh mô hình
+• Cho phép tinh ch?nh mô hình ch? b?ng d? li?u hu?n luy?n: tách m?t ph?n d? ki?m tra, hu?n luy?n trên ph?n còn l?i, t?p ki?m tra th?t v?n nguyên v?n.
+• Trung bình l?i qua nhi?u l?n chia cho u?c lu?ng hi?u nang ?n d?nh hon m?t l?n chia duy nh?t, ít ph? thu?c vào cách chia.
+• M?i m?u d?u du?c dùng c? d? hu?n luy?n l?n d? ki?m tra, r?t h?p v?i t?p d? li?u nh?.
+• Giúp so sánh các mô hình ho?c siêu tham s? (ví d? ?) và phát hi?n overfitting s?m.
+e) Ý nghia c?a PAC learning
+PAC (Probably Approximately Correct) do Leslie Valiant d? xu?t: tìm gi? thuy?t "x?p x? dúng" (approximately correct) v?i "xác su?t cao" (probably). M?t gi? thuy?t g?i là x?p x? dúng n?u error(h) = e; "probably" nghia là di?u dó x?y ra v?i xác su?t ít nh?t 1 - d. Co s? là gi? d?nh m?u m?i du?c l?y t? cùng m?t phân ph?i c? d?nh v?i m?u quá kh?. M?t gi? thuy?t sai thì s? nhanh chóng b? phát hi?n qua d? doán, còn gi? thuy?t dúng nh?t quán trên nhi?u m?u thì khó mà sai nhi?u.
+V?i không gian gi? thuy?t h?u h?n H, xác su?t d? m?t gi? thuy?t x?u (sai s? > e) v?n kh?p N m?u là t?i da (1 - e)^N, nên c?n |H|(1 - e)^N = d, suy ra d? ph?c t?p m?u:
+N = (1/e) · ( ln(1/d) + ln|H| )
+Ví d? v?i không gian gi? thuy?t c?a Câu 6 (|H| = 82), e = 0,1 và d = 0,05: N = 10 × (ln 20 + ln 82) = 10 × (2,996 + 4,407) ˜ 74,0, t?c c?n ít nh?t 75 m?u. Sách còn gi?i thi?u mistake bound model: dánh giá ngu?i h?c theo s? l?n d? doán sai tru?c khi h?i t?.
+f) Sample complexity và computational complexity
+• Sample complexity (d? ph?c t?p m?u): s? m?u hu?n luy?n c?n d? h?i t? d?n m?t gi? thuy?t t?t cho hàm m?c tiêu.
+• Computational complexity (d? ph?c t?p tính toán): lu?ng tính toán c?n d? mô hình h?i t? d?n gi? thuy?t t?t.
+V?i không gian gi? thuy?t h?u h?n, PAC xác d?nh du?c các l?p gi? thuy?t h?c du?c t? s? m?u da th?c; v?i không gian vô h?n thì không, và ph?i dùng VC dimension.
+g) Ý nghia c?a b?t d?ng th?c Hoeffding
+B?t d?ng th?c Hoeffding d?nh lu?ng m?i liên h? gi?a in-sample error và out-of-sample error. V?i t?p gi? thuy?t h?u h?n, theo sách:
+P( | E_in(h) - E_out(h) | = e ) = d = e^(-2ne²)
+Ý nghia: xác su?t d? E_in l?ch kh?i E_out quá e gi?m theo hàm mu khi s? m?u n ho?c e tang. Nên khi n d? l?n, E_in là u?c lu?ng dáng tin c?a E_out. Ví d? n = 1000, e = 0,05 thì e^(-2·1000·0,0025) = e^(-5) ˜ 0,0067. (D?ng hai phía thu?ng vi?t 2e^(-2ne²), và khi ch?n h trong t?p H g?m |H| gi? thuy?t c?n nhân thêm |H| theo union bound, chính là liên h? v?i PAC.)
+h) VC dimension và vai trò v?i không gian gi? thuy?t vô h?n
+VC dimension c?a m?t gi? thuy?t ho?c l?p phân lo?i là s? di?m d? li?u l?n nh?t n mà nó có th? "shatter" (phân tách dúng t?t c? 2n cách gán nhãn duong/âm). Ví d? du?ng th?ng trong m?t ph?ng shatter du?c 2 di?m (4 cách gán nhãn) và 3 di?m không th?ng hàng (8 cách gán nhãn), nhu Hình 3.7 và 3.8 trong sách.
+V?i không gian gi? thuy?t vô h?n thì |H| = 8 nên các ch?n dùng ln|H| (PAC, Hoeffding) không dùng du?c. VC dimension d thay vai trò dó và cho ch?n sai s? t?ng quát hóa:
+E_out(h) = E_in(h) + v( [ 8d·( ln(2m/d) + 1 ) + 8·ln(4/d) ] / m )
+trong dó m là s? m?u hu?n luy?n. Mô hình càng ph?c t?p thì d càng l?n, kho?ng cách gi?a E_out và E_in càng có th? l?n, còn tang m làm kho?ng cách này thu h?p. Vì v?y VC dimension cho bi?t c?n bao nhiêu d? li?u d? quy n?p du?c v?i m?t l?p mô hình cho tru?c.
+Tài li?u tham kh?o
+Sridhar, Machine Learning, Chapter 3: Basics of Learning Theory (m?c 3.1 - 3.7).
+Ð? bài: BT02 - Hu?n luy?n và dánh giá mô hình, môn Máy h?c, TS. Ð? Nhu Tài.
+2
+
